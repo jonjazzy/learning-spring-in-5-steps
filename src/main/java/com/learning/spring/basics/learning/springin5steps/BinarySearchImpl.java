@@ -11,10 +11,16 @@ public class BinarySearchImpl
     @Autowired
     private SortAlgorithm sortingMethod;
 
-    public BinarySearchImpl(SortAlgorithm sortingMethod)
-    {
-        this.sortingMethod = sortingMethod;
-    }
+    //Constructor Injection
+//    public BinarySearchImpl(SortAlgorithm sortingMethod)
+//    {
+//        this.sortingMethod = sortingMethod;
+//    }
+
+//    //Setter Injection
+//    public void setSortingMethod(SortAlgorithm sortingMethod) {
+//        this.sortingMethod = sortingMethod;
+//    }
 
     public int binarySearch(int[] numbers, int numberToSearchFor)
     {
