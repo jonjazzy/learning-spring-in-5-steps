@@ -57,6 +57,15 @@ public class Application
 
 		//get the BinarySearchImpl bean, from the applicationContext (managed by Spring)
 		BinarySearchImpl binarySearch = applicationContext.getBean(BinarySearchImpl.class);
+		BinarySearchImpl binarySearch2 = applicationContext.getBean(BinarySearchImpl.class);
+
+		//Bean Scopes
+		System.out.println("----------------------------------------------");
+		System.out.println("Checking my Bean Scopes");
+		System.out.println("binarySearch scope info is:- " + binarySearch);
+		System.out.println("binarySearch2 scope info is:- " + binarySearch2);
+		System.out.println("----------------------------------------------");
+
 		int result = binarySearch.binarySearch(randomArray.getIntegerArray(), numberToSearchFor);
 
 		System.out.println("The Index of (" + numberToSearchFor + ") is " + result);
