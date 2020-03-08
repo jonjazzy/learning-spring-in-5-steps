@@ -5,7 +5,6 @@ import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
-@Primary
 public class BubbleSort implements SortAlgorithm
 {
     public BubbleSort()
@@ -15,6 +14,7 @@ public class BubbleSort implements SortAlgorithm
 
     public void sort(int[] integerArray)
     {
+        System.out.println("Using BubbleSort");
         int n = integerArray.length;
         for (int i = 0; i < n-1; i++) {
             for (int j = 0; j < n - i - 1; j++) {

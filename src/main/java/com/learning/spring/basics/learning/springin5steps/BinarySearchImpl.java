@@ -9,25 +9,25 @@ import java.util.Arrays;
 public class BinarySearchImpl
 {
     @Autowired
-    private SortAlgorithm sortingMethod;
+    private SortAlgorithm bubbleSort;
 
     //Constructor Injection
-//    public BinarySearchImpl(SortAlgorithm sortingMethod)
+//    public BinarySearchImpl(SortAlgorithm bubbleSort)
 //    {
-//        this.sortingMethod = sortingMethod;
+//        this.bubbleSort = bubbleSort;
 //    }
 
 //    //Setter Injection
-//    public void setSortingMethod(SortAlgorithm sortingMethod) {
-//        this.sortingMethod = sortingMethod;
+//    public void setSortingMethod(SortAlgorithm bubbleSort) {
+//        this.bubbleSort = bubbleSort;
 //    }
 
     public int binarySearch(int[] numbers, int numberToSearchFor)
     {
         //  (1) Sort the Array
 //        Arrays.sort(numbers);
-        sortingMethod = new BubbleSort();
-        sortingMethod.sort(numbers);
+//        bubbleSort = new BubbleSort();
+        bubbleSort.sort(numbers);
             System.out.println("This is my sorted Array: ");
             System.out.println(Arrays.toString(numbers));
             System.out.println("----------------------------------------------");

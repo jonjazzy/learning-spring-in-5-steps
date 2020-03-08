@@ -63,6 +63,7 @@ public class QuickSort implements SortAlgorithm
     }
     public void sort(int[] array)
     {
+        System.out.println("Using QuickSort");
         sorter(array, 0, array.length - 1);
     }
 
