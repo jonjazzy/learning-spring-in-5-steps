@@ -1,10 +1,12 @@
 package com.learning.spring.basics.learning.springin5steps;
 
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
 import org.springframework.context.annotation.Primary;
 import org.springframework.stereotype.Component;
 
 @Component
+@Qualifier("bubble")
 public class BubbleSort implements SortAlgorithm
 {
     public BubbleSort()

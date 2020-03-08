@@ -1,6 +1,7 @@
 package com.learning.spring.basics.learning.springin5steps;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
 
 import java.util.Arrays;
@@ -9,25 +10,27 @@ import java.util.Arrays;
 public class BinarySearchImpl
 {
     @Autowired
-    private SortAlgorithm bubbleSort;
+//    @Qualifier("quick")
+//    @Qualifier("bubble")
+    private SortAlgorithm sortAlgorithm;
 
     //Constructor Injection
-//    public BinarySearchImpl(SortAlgorithm bubbleSort)
+//    public BinarySearchImpl(SortAlgorithm sortAlgorithm)
 //    {
-//        this.bubbleSort = bubbleSort;
+//        this.sortAlgorithm = sortAlgorithm;
 //    }
 
 //    //Setter Injection
-//    public void setSortingMethod(SortAlgorithm bubbleSort) {
-//        this.bubbleSort = bubbleSort;
+//    public void setSortingMethod(SortAlgorithm sortAlgorithm) {
+//        this.sortAlgorithm = sortAlgorithm;
 //    }
 
     public int binarySearch(int[] numbers, int numberToSearchFor)
     {
         //  (1) Sort the Array
 //        Arrays.sort(numbers);
-//        bubbleSort = new BubbleSort();
-        bubbleSort.sort(numbers);
+//        sortAlgorithm = new BubbleSort();
+        sortAlgorithm.sort(numbers);
             System.out.println("This is my sorted Array: ");
             System.out.println(Arrays.toString(numbers));
             System.out.println("----------------------------------------------");
