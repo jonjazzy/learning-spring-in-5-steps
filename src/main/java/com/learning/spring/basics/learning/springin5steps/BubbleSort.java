@@ -1,7 +1,9 @@
 package com.learning.spring.basics.learning.springin5steps;
 
 import org.springframework.boot.autoconfigure.data.web.SpringDataWebProperties;
+import org.springframework.stereotype.Component;
 
+@Component
 public class BubbleSort implements SortAlgorithm
 {
     public BubbleSort()

@@ -1,9 +1,14 @@
 package com.learning.spring.basics.learning.springin5steps;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.Arrays;
 
+@Component
 public class BinarySearchImpl
 {
+    @Autowired
     private SortAlgorithm sortingMethod;
 
     public BinarySearchImpl(SortAlgorithm sortingMethod)
