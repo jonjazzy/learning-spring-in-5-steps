@@ -10,8 +10,8 @@ import org.springframework.stereotype.Component;
 import java.util.Arrays;
 
 @Component
-@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)
-//@Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)
+@Scope(ConfigurableBeanFactory.SCOPE_PROTOTYPE)     //Each bean returned is different
+//@Scope(ConfigurableBeanFactory.SCOPE_SINGLETON)   //Same bean is returned always
 public class BinarySearchImpl
 {
     @Autowired
