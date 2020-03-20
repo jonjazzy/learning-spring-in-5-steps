@@ -1,14 +1,15 @@
 package com.learning.spring.basics.learning.springin5steps;
 
+import com.learning.spring.basics.learning.springin5steps.basic.BinarySearchImpl;
+import com.learning.spring.basics.learning.springin5steps.basic.RandomArray;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
 import java.util.Arrays;
-import java.util.Random;
 
 @SpringBootApplication
-public class Application
+public class BasicApplication
 {
 	/*
 	 *	For spring to do its work, it needs to know 3 things:-
@@ -53,7 +54,7 @@ public class Application
 
 		//Application Context manages all our Beans!
 		ApplicationContext applicationContext =
-				SpringApplication.run(Application.class, args);
+				SpringApplication.run(BasicApplication.class, args);
 
 		//get the BinarySearchImpl bean, from the applicationContext (managed by Spring)
 		BinarySearchImpl binarySearch = applicationContext.getBean(BinarySearchImpl.class);
