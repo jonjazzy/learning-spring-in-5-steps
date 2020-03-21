@@ -1,18 +1,18 @@
-package com.learning.spring.basics.learning.springin5steps;
+package com.learning.spring.basics.componentscan;		// Component scan will scan this package and everything under it for this application context
 
-import com.learning.spring.basics.learning.springin5steps.basic.BinarySearchImpl;
-import com.learning.spring.basics.learning.springin5steps.basic.RandomArray;
-import com.learning.spring.basics.learning.springin5steps.scope.PersonDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+//import org.springframework.boot.SpringApplication;
+//import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-import java.util.Arrays;
-
-@SpringBootApplication
-public class ScopeApplication
+@Configuration
+//@ComponentScan("com.learning.spring.basics.componentscan")	//Use this to add ay other package. The import alone wont work
+@ComponentScan	//Use this to add ay other package. The import alone wont work
+public class ComponentScanApplication
 {
 	/*
 	 *	For spring to do its work, it needs to know 3 things:-
@@ -35,22 +35,17 @@ public class ScopeApplication
 	 */
 
 	// have static variables in all caps! This will log to the output screen
-	private static Logger LOGGER = LoggerFactory.getLogger(ScopeApplication.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(ComponentScanApplication.class);
 
 	public static void main(String[] args)
 	{
 		//Application Context manages all our Beans!
 		ApplicationContext applicationContext =
-				SpringApplication.run(ScopeApplication.class, args);
+				new AnnotationConfigApplicationContext(ComponentScanApplication.class);
 
 		//
-		PersonDAO personDAO = applicationContext.getBean(PersonDAO.class);
-		PersonDAO personDAO2 = applicationContext.getBean(PersonDAO.class);
+		ComponentDAO componentDAO = applicationContext.getBean(ComponentDAO.class);
 
-		LOGGER.info("personDAO:- {}", personDAO);
-		LOGGER.info("personDAO's JdbcConnection:- {}", personDAO.getJdbcConnection());
-
-		LOGGER.info("personDAO2:- {}", personDAO2);
-		LOGGER.info("personDAO2' JdbcConnetion:- {}", personDAO2.getJdbcConnection());
+		LOGGER.info("componentDAO:- {}", componentDAO);
 	}
 }

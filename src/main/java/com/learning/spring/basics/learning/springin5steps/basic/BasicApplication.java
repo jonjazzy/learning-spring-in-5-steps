@@ -1,14 +1,16 @@
-package com.learning.spring.basics.learning.springin5steps;
+package com.learning.spring.basics.learning.springin5steps.basic;
 
-import com.learning.spring.basics.learning.springin5steps.basic.BinarySearchImpl;
-import com.learning.spring.basics.learning.springin5steps.basic.RandomArray;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+//import org.springframework.boot.SpringApplication;
+//import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
 import java.util.Arrays;
 
-@SpringBootApplication
+@Configuration
+@ComponentScan
 public class BasicApplication
 {
 	/*
@@ -54,7 +56,8 @@ public class BasicApplication
 
 		//Application Context manages all our Beans!
 		ApplicationContext applicationContext =
-				SpringApplication.run(BasicApplication.class, args);
+				new AnnotationConfigApplicationContext(BasicApplication.class);
+//				SpringApplication.run(BasicApplication.class, args);
 
 		//get the BinarySearchImpl bean, from the applicationContext (managed by Spring)
 		BinarySearchImpl binarySearch = applicationContext.getBean(BinarySearchImpl.class);

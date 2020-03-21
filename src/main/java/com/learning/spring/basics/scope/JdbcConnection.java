@@ -1,13 +1,11 @@
-package com.learning.spring.basics.learning.springin5steps.scope;
+package com.learning.spring.basics.scope;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.config.ConfigurableBeanFactory;
 import org.springframework.context.annotation.Scope;
+import org.springframework.context.annotation.ScopedProxyMode;
 import org.springframework.stereotype.Component;
 
-@Component
 /*
-
     Summary: If you're using a BEAN (component), and one of its dependencies (autowired)
     is a PROTOTYPE, you need to use a proxy so each time you try to get BEAN and the dependencies
     you'll get a new instance of the dependency
@@ -26,16 +24,13 @@ import org.springframework.stereotype.Component;
     {
 *
 */
-public class PersonDAO
+@Component
+@Scope(value=ConfigurableBeanFactory.SCOPE_PROTOTYPE,
+        proxyMode= ScopedProxyMode.TARGET_CLASS)
+public class JdbcConnection
 {
-    @Autowired
-    JdbcConnection jdbcConnection;
-
-    public JdbcConnection getJdbcConnection() {
-        return jdbcConnection;
-    }
-
-    public void setJdbcConnection(JdbcConnection jdbcConnection) {
-        this.jdbcConnection = jdbcConnection;
+    public JdbcConnection()
+    {
+        System.out.println("JdbcConnection Connected!");
     }
 }

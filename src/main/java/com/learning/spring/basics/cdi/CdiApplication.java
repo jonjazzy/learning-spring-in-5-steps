@@ -1,16 +1,18 @@
-package com.learning.spring.basics.learning.springin5steps;		// Component scan will scan this package and everything under it for this application context
+package com.learning.spring.basics.cdi;
 
-import com.learning.spring.basics.componentscan.ComponentDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+//import org.springframework.boot.SpringApplication;
+//import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-@SpringBootApplication
-@ComponentScan("com.learning.spring.basics.componentscan")	//Use this to add ay other package. The import alone wont work
-public class ComponentScanApplication
+@Configuration
+//@ComponentScan("com.learning.spring.basics.cdi")
+@ComponentScan
+public class CdiApplication
 {
 	/*
 	 *	For spring to do its work, it needs to know 3 things:-
@@ -33,17 +35,17 @@ public class ComponentScanApplication
 	 */
 
 	// have static variables in all caps! This will log to the output screen
-	private static Logger LOGGER = LoggerFactory.getLogger(ComponentScanApplication.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(CdiApplication.class);
 
 	public static void main(String[] args)
 	{
 		//Application Context manages all our Beans!
 		ApplicationContext applicationContext =
-				SpringApplication.run(ComponentScanApplication.class, args);
+				new AnnotationConfigApplicationContext(CdiApplication.class);
 
 		//
-		ComponentDAO componentDAO = applicationContext.getBean(ComponentDAO.class);
+		SomeCdiBusiness someCdiBusiness = applicationContext.getBean(SomeCdiBusiness.class);
 
-		LOGGER.info("componentDAO:- {}", componentDAO);
+		LOGGER.info("****\n\nsomeCdiBusiness:- {} |\nsomeCdiDao:-{}", someCdiBusiness, someCdiBusiness.getSomeCdiDAO());
 	}
 }

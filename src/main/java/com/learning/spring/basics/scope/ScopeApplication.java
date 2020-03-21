@@ -1,18 +1,17 @@
-package com.learning.spring.basics.learning.springin5steps;
+package com.learning.spring.basics.scope;
 
-import com.learning.spring.basics.cdi.SomeCdiBusiness;
-import com.learning.spring.basics.cdi.SomeCdiDAO;
-import com.learning.spring.basics.learning.springin5steps.scope.PersonDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.boot.SpringApplication;
-import org.springframework.boot.autoconfigure.SpringBootApplication;
+//import org.springframework.boot.SpringApplication;
+//import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
 
-@SpringBootApplication
-@ComponentScan("com.learning.spring.basics.cdi")
-public class CdiApplication
+@Configuration
+@ComponentScan
+public class ScopeApplication
 {
 	/*
 	 *	For spring to do its work, it needs to know 3 things:-
@@ -35,17 +34,22 @@ public class CdiApplication
 	 */
 
 	// have static variables in all caps! This will log to the output screen
-	private static Logger LOGGER = LoggerFactory.getLogger(CdiApplication.class);
+	private static Logger LOGGER = LoggerFactory.getLogger(ScopeApplication.class);
 
 	public static void main(String[] args)
 	{
 		//Application Context manages all our Beans!
 		ApplicationContext applicationContext =
-				SpringApplication.run(CdiApplication.class, args);
+				new AnnotationConfigApplicationContext(ScopeApplication.class);
 
 		//
-		SomeCdiBusiness someCdiBusiness = applicationContext.getBean(SomeCdiBusiness.class);
+		PersonDAO personDAO = applicationContext.getBean(PersonDAO.class);
+		PersonDAO personDAO2 = applicationContext.getBean(PersonDAO.class);
 
-		LOGGER.info("****\n\nsomeCdiBusiness:- {} |\nsomeCdiDao:-{}", someCdiBusiness, someCdiBusiness.getSomeCdiDAO());
+		LOGGER.info("personDAO:- {}", personDAO);
+		LOGGER.info("personDAO's JdbcConnection:- {}", personDAO.getJdbcConnection());
+
+		LOGGER.info("personDAO2:- {}", personDAO2);
+		LOGGER.info("personDAO2' JdbcConnetion:- {}", personDAO2.getJdbcConnection());
 	}
 }
