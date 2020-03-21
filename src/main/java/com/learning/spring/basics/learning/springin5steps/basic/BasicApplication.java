@@ -55,23 +55,26 @@ public class BasicApplication
 		int numberToSearchFor = randomArray.getIntegerArray()[(int)(Math.random() * arrayLength)];
 
 		//Application Context manages all our Beans!
-		ApplicationContext applicationContext =
-				new AnnotationConfigApplicationContext(BasicApplication.class);
+		try(AnnotationConfigApplicationContext annotationConfigApplicationContext =
+				new AnnotationConfigApplicationContext(BasicApplication.class)) {
 //				SpringApplication.run(BasicApplication.class, args);
 
-		//get the BinarySearchImpl bean, from the applicationContext (managed by Spring)
-		BinarySearchImpl binarySearch = applicationContext.getBean(BinarySearchImpl.class);
-		BinarySearchImpl binarySearch2 = applicationContext.getBean(BinarySearchImpl.class);
+			//get the BinarySearchImpl bean, from the applicationContext (managed by Spring)
+			BinarySearchImpl binarySearch = annotationConfigApplicationContext.getBean(BinarySearchImpl.class);
+			BinarySearchImpl binarySearch2 = annotationConfigApplicationContext.getBean(BinarySearchImpl.class);
 
-		//Bean Scopes
-		System.out.println("----------------------------------------------");
-		System.out.println("Checking my Bean Scopes");
-		System.out.println("binarySearch scope info is:- " + binarySearch);
-		System.out.println("binarySearch2 scope info is:- " + binarySearch2);
-		System.out.println("----------------------------------------------");
+			//Bean Scopes
+			System.out.println("----------------------------------------------");
+			System.out.println("Checking my Bean Scopes");
+			System.out.println("binarySearch scope info is:- " + binarySearch);
+			System.out.println("binarySearch2 scope info is:- " + binarySearch2);
+			System.out.println("----------------------------------------------");
 
-		int result = binarySearch.binarySearch(randomArray.getIntegerArray(), numberToSearchFor);
+			int result = binarySearch.binarySearch(randomArray.getIntegerArray(), numberToSearchFor);
 
-		System.out.println("The Index of (" + numberToSearchFor + ") is " + result);
+			System.out.println("The Index of (" + numberToSearchFor + ") is " + result);
+
+			annotationConfigApplicationContext.close();        // Note ApplicationContext doesnt have close() method
+		}
 	}
 }

@@ -87,13 +87,14 @@ public class BinarySearchImpl
     @PostConstruct
     public void postConstruct()
     {
-        LOGGER.info("postConstruct");   //This will initialize as soon as the dependency is available
+        LOGGER.info("postConstruct: I am running methods to do before bean is even CREATED");   //This will initialize as soon as the dependency is available
+        System.out.println("preDestroy: I am running methods to do before bean is even CREATED");
     }
 
     @PreDestroy
     public void preDestroy()
     {
         LOGGER.info("preDestroy");
-        System.out.println("preDestroy");
+        System.out.println("preDestroy: I am running methods to do before bean is killed");
     }
 }
