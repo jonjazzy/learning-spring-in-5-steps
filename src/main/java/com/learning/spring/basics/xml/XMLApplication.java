@@ -1,12 +1,7 @@
 package com.learning.spring.basics.xml;
 
-import com.learning.spring.basics.learning.springin5steps.basic.BasicApplication;
-import com.learning.spring.basics.learning.springin5steps.basic.BinarySearchImpl;
-import com.learning.spring.basics.scope.PersonDAO;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
@@ -14,8 +9,6 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 //import org.springframework.boot.SpringApplication;
 //import org.springframework.boot.autoconfigure.SpringBootApplication;
 
-@Configuration
-@ComponentScan
 public class XMLApplication
 {
 	/*
@@ -46,6 +39,11 @@ public class XMLApplication
 		try (ClassPathXmlApplicationContext classPathXmlApplicationContext =
 					 new ClassPathXmlApplicationContext("applicationContext.xml")) {
 //				SpringApplication.run(BasicApplication.class, args);
+
+			LOGGER.info("----------------------------------------------");
+			LOGGER.info("Give me all the beans for this App Context:-");
+			LOGGER.info("{}", (Object)classPathXmlApplicationContext.getBeanDefinitionNames());
+			LOGGER.info("----------------------------------------------");
 
 			//get the BinarySearchImpl bean, from the applicationContext (managed by Spring)
 			XMLPersonDAO xmlPersonDAO = classPathXmlApplicationContext.getBean(XMLPersonDAO.class);
